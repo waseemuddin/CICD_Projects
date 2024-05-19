@@ -22,10 +22,10 @@ pipeline {
     }
     stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://52.91.146.245:9000"
+        SONAR_URL = "http://54.197.130.102:9000"
       }
       steps {
-        withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+        withCredentials([string(credentialsId: 'sonar-id', variable: 'SONAR_AUTH_TOKEN')]) {
           sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
         }
       }
@@ -48,11 +48,11 @@ pipeline {
     }
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
+            GIT_REPO_NAME = "CICD_Projects"
             GIT_USER_NAME = "waseemuddin"
         }
         steps {
-            withCredentials([string(credentialsId: 'github-key', variable: 'GITHUB_TOKEN')]) {
+            withCredentials([string(credentialsId: 'github-key-new', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                     git config user.email "waseem.uddin@live.com "
                     git config user.name "waseemuddin"
