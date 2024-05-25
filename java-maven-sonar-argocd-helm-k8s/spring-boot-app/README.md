@@ -109,7 +109,57 @@ Log in to Jenkins using the password generated during setup
 
 ![Jenkins server Step 9](img/09.png)
 
+Pileline steps are same as we created in Project - 01 - [](https://github.com/waseemuddin/simple-cicd-project01.git)
+
 ![Jenkins server Step 10](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/13.JPG)
 ![Jenkins server Step 11](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/14.JPG)
 ![Jenkins server Step 12](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/15.JPG)
 ![Jenkins server Step 13](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/16.JPG)
+
+### Step 07 - Install Plugins
+
+Now next step is to install some pluings. Goto Manage jenkins and click plugin and install availabale plugins
+
+1. **docker pipeline**: 
+![Jenkins server Step 10](img/10.png)
+
+
+2. **sinarqube scanner** 
+![Jenkins server Step 11](img/11.png)
+
+
+### Step 08 - Installation of SonarQube
+
+``` shell
+apt install unzip
+adduser sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip *
+chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+./sonar.sh start
+
+```
+Now you can access the SonarQube Server on http://<ip-address>:9000
+
+![Jenkins server Step 11](img/12.png)
+
+Now in order to commnucate the Sonar-Server with Jenkins we need to create sonar-token id and made it available to jenkins credentails
+
+Sonar - Server Token
+
+![Jenkins server Step 11](img/13.png) 
+
+Jenkins credentails for sonar-secret token
+
+![Jenkins server Step 11](img/14.png) 
+
+
+
+
+3. **Jenkins Setup**: You can either manually install Jenkins or use a Jenkins image.
+4. **GitHub Account**: You need a GitHub account to automate the pipeline.
+5. **Kubernetes cluster** : (Minikube is fine)
+5. **Argo CD** : (usig Argo CD operator operatorhub.com)
+
