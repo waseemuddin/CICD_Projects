@@ -147,6 +147,8 @@ Now you can access the SonarQube Server on http://<ip-address>:9000
 
 Now in order to commnucate the Sonar-Server with Jenkins we need to create sonar-token id and made it available to jenkins credentails
 
+![Jenkins server Step 11](img/jenkins-sonar-com.png)
+
 Sonar - Server Token
 
 ![Jenkins server Step 11](img/13.png) 
@@ -154,6 +156,117 @@ Sonar - Server Token
 Jenkins credentails for sonar-secret token
 
 ![Jenkins server Step 11](img/14.png) 
+
+### Step 08 - Installation of docker
+
+docker installation link : https://docs.docker.com/engine/install/ubuntu/
+
+```shell 
+
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+```shell
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+### Step 09 - Jenkins Github Secrets
+
+In order to update the deployment file dynamically you need to create the Github secrets key
+
+Goto Github prpfile and setting. 
+Create classic token id 
+
+![Jenkins server Step 17](img/17.png) 
+
+
+### Step 09 - Build Pipeline Code
+
+In order to Build/Run the pipleline, please double check your Jenkinsfile Code 
+
+```shell
+
+pipeline {
+  agent {
+    docker {
+      image 'waseem63/maven-docker-agent:v1'
+      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' //  Docker socket to access the host's Docker daemon
+    }
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        sh 'echo passed'
+        //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
+      }
+    }
+    stage('Build and Test') {
+      steps {
+        sh 'ls -ltr'
+        // build the project and create a JAR file
+        sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
+      }
+    }
+    stage('Static Code Analysis') {
+      environment {
+        SONAR_URL = "http://100.25.31.22:9000"
+      }
+      steps {
+        withCredentials([string(credentialsId: 'sonar-id', variable: 'SONAR_AUTH_TOKEN')]) {
+          sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+        }
+      }
+    }
+    stage('Build and Push Docker Image') {
+      environment {
+        DOCKER_IMAGE = "waseem63/cicd-pipeline-project-two:${BUILD_NUMBER}"
+        // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
+        REGISTRY_CREDENTIALS = credentials('docker-hub-id')
+      }
+      steps {
+        script {
+            sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
+            def dockerImage = docker.image("${DOCKER_IMAGE}")
+            docker.withRegistry('https://index.docker.io/v1/', "docker-hub-id") {
+                dockerImage.push()
+            }
+        }
+      }
+    }
+    stage('Update Deployment File') {
+        environment {
+            GIT_REPO_NAME = "CICD_Projects"
+            GIT_USER_NAME = "waseemuddin"
+        }
+        steps {
+            withCredentials([string(credentialsId: 'github-key-new', variable: 'GITHUB_TOKEN')]) {
+                sh '''
+                    git config user.email "waseem.uddin@live.com "
+                    git config user.name "waseemuddin"
+                    BUILD_NUMBER=${BUILD_NUMBER}
+                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+                    git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                '''
+            }
+        }
+    }
+  }
+}
+```
+
 
 
 
