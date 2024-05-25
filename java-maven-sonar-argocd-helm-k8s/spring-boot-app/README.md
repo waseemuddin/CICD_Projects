@@ -25,7 +25,7 @@ For more updates and projects, visit:
 Here are the step-by-step details to set up an end-to-end Jenkins pipeline for a Java application using SonarQube, Argo CD, Helm, and Kubernetes:
 
 ## Architecture Diagram
-![Architecture Diagram](img/pipelinediagram.png)
+![Architecture Diagram](../img/pipelinediagram.png)
 
 ### Step 01 - Create EC2 Machine 
 ![EC2 Setup Step 1](img/2.png)
