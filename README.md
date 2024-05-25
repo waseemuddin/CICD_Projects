@@ -3,17 +3,8 @@
 
 This repo is about end to end cicd project from begineers to advance level 
 
-1. Project # 1 Simple CICD Pipeline Project - Todo App
+1. Project # 1 Simple CICD Pipeline Project - 💾 [Todo App](https://github.com/waseemuddin/simple-cicd-project01)
 
-2. Project # 2 End to End CICD Project using Java based application 
+2. Project # 2 - 💾 [End to End CICD Project using Java based application](https://github.com/waseemuddin/CICD_Projects/blob/main/java-maven-sonar-argocd-helm-k8s/spring-boot-app/README.md)
 
-3. Define the pipeline stages:
-
-4. Configure Jenkins pipeline stages:
-
-5. Set up Argo CD:
-
-6. Configure Jenkins pipeline to integrate with Argo CD:
-
-7. Run the Jenkins pipeline:
     
