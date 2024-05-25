@@ -63,5 +63,39 @@ echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install jenkins
+
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
 ```
 ![EC2 Setup Step 4](img/05.png)
+
+Here is the Jenkins Installation URL : https://www.jenkins.io/doc/book/installing/linux/
+
+### Step 04 - Installation of Java - JDK
+
+```shell
+sudo apt update
+sudo apt install fontconfig openjdk-17-jre
+java -version
+openjdk version "17.0.8" 2023-07-18
+OpenJDK Runtime Environment (build 17.0.8+7-Debian-1deb12u1)
+OpenJDK 64-Bit Server VM (build 17.0.8+7-Debian-1deb12u1, mixed mode, sharing)
+
+```
+
+### Step 05 - Access Jenkins and Create Pipeline 
+
+```shell
+Jenkins server access ur : <server-ip>:portno
+e.g : http: 192.168.0.1:8080
+```
+Now, In order to access the Jenkins server, first you need to get the Jenkins password
+
+![Jenkins server Step 6](img/06.png)
+![Jenkins server Step 7](img/07.png)
+![Jenkins server Step 8](img/08.png)
+
+### Step 06 - Create Pipeline
+
+![Jenkins server Step 9](img/09.png)
