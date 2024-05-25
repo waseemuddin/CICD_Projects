@@ -274,8 +274,60 @@ pipeline {
 
 ![Jenkins server Step 21](img/21.png) 
 
-
 ![Jenkins server Step 22](img/22.png) 
+
+
+### Step 10 - ArgoCD - Part
+
+Now we have sucessfully completed and see the CI part and now let start our CD part using ArgoCD
+
+In is part we are using the Minikube for cluster deployment and for continues deployment we use the Argocd as operator
+
+![Jenkins server Step 22](img/argocd.png)
+
+
+### Step 11 - Installation of Minikube
+
+Please follow the link for installation https://minikube.sigs.k8s.io/docs/start/
+
+![Jenkins server Step 22](img/minikube.png)
+
+
+### Step 11 - Installation of ArgoCD
+
+The operator's goal is to automate the tasks required when operating an Argo CD cluster.
+
+For instaallation of ArgoCD on minikube we use the opeeratorhub.com 
+
+complete steps are available on operatorhub.com
+
+![Jenkins server Step 26](img/argocd2.png)
+
+document link : https://argocd-operator.readthedocs.io/en/latest/usage/basics/
+
+```shell
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.28.0/install.sh | bash -s v0.28.0
+
+kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
+
+kubectl get csv -n operators
+
+```
+After few times aur Argcd server is up and running
+
+![Jenkins server Step 22](img/argopods2.png)
+
+Now if you want to access the ArgoCD server use the following command and access it
+
+```shell
+minikube service example-argocd-server
+minikube service list
+```
+After running the above commands you will see the URl of ArgoCD server and you can access it
+
+![Jenkins server Step 22](img/argocdser.png)
+
+
 
 
 
