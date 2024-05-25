@@ -1,3 +1,4 @@
+/*
 
 pipeline {
   agent {
@@ -67,8 +68,9 @@ pipeline {
     }
   }
 }
+*/
 
-/*
+
 
 pipeline {
     agent none
@@ -98,4 +100,3 @@ pipeline {
     }
 }
 
-*/
