@@ -28,10 +28,40 @@ Here are the step-by-step details to set up an end-to-end Jenkins pipeline for a
 ![Architecture Diagram](img/pipelinediagram.png)
 
 ### Step 01 - Create EC2 Machine 
-![EC2 Setup Step 1](img/2.png)
-![EC2 Setup Step 2](img/03.png)
-![EC2 Setup Step 3](img/04.png)
-![EC2 Setup Step 4](img/05.JPG)
+![EC2 Setup Step 1](img/1.png)
+![EC2 Setup Step 2](img/02.png)
+![EC2 Setup Step 3](img/03.png)
+
+### Step 02 - Connect EC2 Machine  
+
+Connect to your EC2 Ubuntu Machine using SSH. Make sure you're in the root user or use 'sudo'.
+
+```shell
+$ sudo ssh -i "key.pem" ubuntu@<ip-address>
+
+```
+![EC2 Setup Step 4](img/04.png)
 
 
+### Step 03 - Installation of Jenkins
 
+Install Jenkins either manually or using container-based installation. Here's the container-based installation command.
+
+```shell
+$ docker run -p 8080:8080 -p 50000:50000 -d \
+-v jenkins_home:/var/jenkins_home \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v $(which docker):/usr/bin/docker jenkins/jenkins:lts
+```
+or you can install directly on server Ec2 machine.
+
+```shell
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+```
+![EC2 Setup Step 4](img/05.png)
