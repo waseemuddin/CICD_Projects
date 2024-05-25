@@ -110,6 +110,6 @@ Log in to Jenkins using the password generated during setup
 ![Jenkins server Step 9](img/09.png)
 
 ![Jenkins server Step 10](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/13.JPG)
-![Jenkins server Step 11] https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/14.JPG
-![Jenkins server Step 12] https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/15.JPG
-![Jenkins server Step 13] https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/16.JPG
+![Jenkins server Step 11](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/14.JPG)
+![Jenkins server Step 12](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/15.JPG)
+![Jenkins server Step 13](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/16.JPG)
