@@ -315,7 +315,7 @@ kubectl get csv -n operators
 ```
 After few times aur Argcd server is up and running
 
-![Jenkins server Step 22](img/argopods2.png)
+![Jenkins server Step arg-2](img/argopods2.png)
 
 Now if you want to access the ArgoCD server use the following command and access it
 
@@ -325,8 +325,11 @@ minikube service list
 ```
 After running the above commands you will see the URl of ArgoCD server and you can access it
 
-![Jenkins server Step 22](img/argocdser.png)
+![Jenkins server Step ser](img/argocdser.png)
 
+Login with ArgoCD server and create the App to autmoate the process of development
+
+![Jenkins server Step dev](img/argodev.png)
 
 
 
