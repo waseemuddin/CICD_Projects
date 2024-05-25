@@ -272,10 +272,10 @@ pipeline {
 
 ![Jenkins server Step 19](img/19.png) 
 
-![Jenkins server Step 20](img/20.png) 
-
-
 ![Jenkins server Step 21](img/21.png) 
+
+
+![Jenkins server Step 22](img/22.png) 
 
 
 
