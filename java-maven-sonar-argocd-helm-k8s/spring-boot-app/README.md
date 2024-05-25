@@ -331,11 +331,3 @@ Login with ArgoCD server and create the App to autmoate the process of developme
 
 ![Jenkins server Step dev](img/argodev.png)
 
-
-
-
-3. **Jenkins Setup**: You can either manually install Jenkins or use a Jenkins image.
-4. **GitHub Account**: You need a GitHub account to automate the pipeline.
-5. **Kubernetes cluster** : (Minikube is fine)
-5. **Argo CD** : (usig Argo CD operator operatorhub.com)
-
