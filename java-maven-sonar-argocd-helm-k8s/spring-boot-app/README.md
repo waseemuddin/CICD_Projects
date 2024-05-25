@@ -28,7 +28,7 @@ Here are the step-by-step details to set up an end-to-end Jenkins pipeline for a
 ![Architecture Diagram](img/pipelinediagram.png)
 
 ### Step 01 - Create EC2 Machine 
-![EC2 Setup Step 1](img/1.png)
+![EC2 Setup Step 1](img/01.png)
 ![EC2 Setup Step 2](img/02.png)
 ![EC2 Setup Step 3](img/03.png)
 
@@ -84,7 +84,7 @@ OpenJDK 64-Bit Server VM (build 17.0.8+7-Debian-1deb12u1, mixed mode, sharing)
 
 ```
 
-### Step 05 - Access Jenkins and Create Pipeline 
+### Step 05 - Access Jenkins
 
 ```shell
 Jenkins server access ur : <server-ip>:portno
@@ -96,6 +96,17 @@ Now, In order to access the Jenkins server, first you need to get the Jenkins pa
 ![Jenkins server Step 7](img/07.png)
 ![Jenkins server Step 8](img/08.png)
 
+Now that we have setup our EC2 server, Docker, and Jenkins, let's create a simple Jenkins pipeline.
+
+Before creating the pipeline, ensure your Git repository is up to date. Use the following links to update.
+
+- 💾 [End-to-End-CICD](https://github.com/waseemuddin/CICD_Projects.git)
+
+Log in to Jenkins using the password generated during setup
+
+
 ### Step 06 - Create Pipeline
 
 ![Jenkins server Step 9](img/09.png)
+
+![Jenkins server Step 10](https://github.com/waseemuddin/simple-cicd-project01/blob/main/img/13.JPG)
