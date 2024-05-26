@@ -17,7 +17,7 @@ Ensure you have the following prerequisites before proceeding:
 5. **Kubernetes cluster** : (Minikube is fine)
 5. **Argo CD** : (usig Argo CD operator operatorhub.com)
 
-For more updates and projects, visit:
+Please follow my channel and website for more updates:
 - 💾 [shaikhwaseem.com](https://shaikhwaseem.com)
 - 💾 [YouTube Channel](https://www.youtube.com/@waseeemuddin)
 
@@ -96,18 +96,18 @@ Now, In order to access the Jenkins server, first you need to get the Jenkins pa
 ![Jenkins server Step 7](img/07.png)
 ![Jenkins server Step 8](img/08.png)
 
-Now that we have setup our EC2 server, Docker, and Jenkins, let's create a simple Jenkins pipeline.
+Now that we have setup our EC2 server and Jenkins, let's create a simple Jenkins pipeline.
 
-Before creating the pipeline, ensure your Git repository is up to date. Use the following links to update.
+Before creating the pipeline, ensure you clone the Git repository as given in the following links.
 
-- 💾 [End-to-End-CICD](https://github.com/waseemuddin/CICD_Projects.git)
+- 💾 [Project 2 - End-to-End-CICD](https://github.com/waseemuddin/CICD_Projects.git)
 
 Log in to Jenkins using the password generated during setup
 
 
 ### Step 06 - Create Pipeline
 
-![Jenkins server Step 9](img/09.png)
+![pipline Step 9](img/09.png)
 
 Pileline steps are same as we created in Project - 01 - [](https://github.com/waseemuddin/simple-cicd-project01.git)
 
@@ -118,17 +118,19 @@ Pileline steps are same as we created in Project - 01 - [](https://github.com/wa
 
 ### Step 07 - Install Plugins
 
-Now next step is to install some pluings. Goto Manage jenkins and click plugin and install availabale plugins
+Now we need some plugins in order to execute our pipleline sucessfully and these plugins are part of project. Just goto manage jenkins and click plugin and install availabale plugins
 
 1. **docker pipeline**: 
-![Jenkins server Step 10](img/10.png)
+![plugin Step 10](img/10.png)
 
 
 2. **sinarqube scanner** 
-![Jenkins server Step 11](img/11.png)
+![sonarqube Step 11](img/11.png)
 
 
 ### Step 08 - Installation of SonarQube
+
+Next step is to install the SonarQube Server for static code analysis. please follow the steps
 
 ``` shell
 apt install unzip
@@ -143,19 +145,19 @@ cd sonarqube-9.4.0.54424/bin/linux-x86-64/
 ```
 Now you can access the SonarQube Server on http://<ip-address>:9000
 
-![Jenkins server Step 11](img/12.png)
+![sonar setup Step 12](img/12.png)
 
-Now in order to commnucate the Sonar-Server with Jenkins we need to create sonar-token id and made it available to jenkins credentails
+### Now in order to commnucate the Sonar-Server with Jenkins we need to create sonar-token id and made it available to jenkins credentails
 
-![Jenkins server Step 11](img/jenkins-sonar-com.png)
+![token step 13](img/jenkins-sonar-com.png)
 
-Sonar - Server Token
+#### Sonar - Server Token
 
-![Jenkins server Step 11](img/13.png) 
+![sonar token step 14](img/13.png) 
 
 Jenkins credentails for sonar-secret token
 
-![Jenkins server Step 11](img/14.png) 
+![jenkins step 15](img/14.png) 
 
 ### Step 08 - Installation of docker
 
@@ -268,29 +270,29 @@ pipeline {
 
 ```
 
-![Jenkins server Step 18](img/18.png) 
+![pipeline step 18](img/18.png) 
 
-![Jenkins server Step 19](img/19.png) 
+![pipeline step 19](img/19.png) 
 
-![Jenkins server Step 21](img/21.png) 
+![pipeline step 21](img/21.png) 
 
-![Jenkins server Step 22](img/22.png) 
+![pipeline step 22](img/22.png) 
 
 
 ### Step 10 - ArgoCD - Part
 
-Now we have sucessfully completed and see the CI part and now let start our CD part using ArgoCD
+Now we have sucessfully completed and see the CI part and now let start our CD part using K8s and ArgoCD
 
-In is part we are using the Minikube for cluster deployment and for continues deployment we use the Argocd as operator
+In is part we are using the Minikube for cluster deployment and for continues deployment we used the Argocd as operator
 
-![Jenkins server Step 22](img/argocd.png)
+![argo step 22](img/argocd.png)
 
 
 ### Step 11 - Installation of Minikube
 
 Please follow the link for installation https://minikube.sigs.k8s.io/docs/start/
 
-![Jenkins server Step 22](img/minikube.png)
+![argo step 23](img/minikube.png)
 
 
 ### Step 11 - Installation of ArgoCD
@@ -301,7 +303,7 @@ For instaallation of ArgoCD on minikube we use the opeeratorhub.com
 
 complete steps are available on operatorhub.com
 
-![Jenkins server Step 26](img/argocd2.png)
+![argo step 24](img/argocd2.png)
 
 document link : https://argocd-operator.readthedocs.io/en/latest/usage/basics/
 
@@ -315,7 +317,7 @@ kubectl get csv -n operators
 ```
 After few times aur Argcd server is up and running
 
-![Jenkins server Step arg-2](img/argopods2.png)
+![argo step 25](img/argopods2.png)
 
 Now if you want to access the ArgoCD server use the following command and access it
 
@@ -325,9 +327,10 @@ minikube service list
 ```
 After running the above commands you will see the URl of ArgoCD server and you can access it
 
-![Jenkins server Step ser](img/argocdser.png)
+![argo step 26](img/argocdser.png)
 
 Login with ArgoCD server and create the App to autmoate the process of development
 
-![Jenkins server Step dev](img/argodev.png)
+![argo step 27](img/argodev.png)
 
+.......HURRY YOU DID THE END TO END CICD PIPELINE..........
