@@ -7,4 +7,5 @@ This repo is about end to end cicd project from beginners to advance level
 
 2. Project # 2 - 💾 [End to End CICD Project using Java based application](https://github.com/waseemuddin/CICD_Projects/blob/main/java-maven-sonar-argocd-helm-k8s/spring-boot-app/README.md)
 
-    
+2. Project # 3 - 💾 [End to End DevSecOps Project ](https://github.com/waseemuddin/DevSecOps-Project/blob/devops/README.md)
+
