@@ -1,7 +1,7 @@
 
 # End to End CICD Project Repository (Beginners to Advance Level)
 
-This repo is about end to end cicd project from beginners to advance level 
+This repo is about end to end cicd projects from beginners to advanced-level 
 
 1. Project # 1 Simple CICD Pipeline Project - 💾 [Todo App](https://github.com/waseemuddin/simple-cicd-project01)
 
