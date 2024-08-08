@@ -3,7 +3,7 @@
 
 This repo is about end-to-end CICD projects from beginners to advanced level
 
-1. Project # 1 Simple CICD Pipeline Project - 💾 [Todo App](https://github.com/waseemuddin/simple-cicd-project01).
+1. Project # 1 Simple CICD Pipeline Project- 💾 [Todo App](https://github.com/waseemuddin/simple-cicd-project01).
 
 2. Project # 2 - 💾 [End to End CICD Project using Java based application](https://github.com/waseemuddin/CICD_Projects/blob/main/java-maven-sonar-argocd-helm-k8s/spring-boot-app/README.md)
 
