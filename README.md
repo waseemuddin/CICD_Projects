@@ -1,5 +1,5 @@
 
-# End-to-End CICD Project Repository (Beginners to Advanced Level).##
+# End-to-End CICD Project Repository (Beginners to Advanced Level)##
 
 This repo is about end-to-end CICD projects from beginners to advanced level
 
